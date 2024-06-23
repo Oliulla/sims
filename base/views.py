@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser  # type: ignore
 from django.http import JsonResponse
@@ -27,9 +27,14 @@ def room(request, pk):
 @csrf_exempt
 def studentApi(request, id=0):
     if request.method == "GET":
-        students = Student.objects.all()
-        students_serializer = StudentSerializer(students, many=True)
-        return JsonResponse(students_serializer.data, safe=False)
+        if id != 0:
+            student = get_object_or_404(Student, pk=id)
+            student_serializer = StudentSerializer(student)
+            return JsonResponse(student_serializer.data, safe=False)
+        else:
+            students = Student.objects.all()
+            students_serializer = StudentSerializer(students, many=True)
+            return JsonResponse(students_serializer.data, safe=False)
 
     elif request.method == "POST":
         student_data = JSONParser().parse(request)
@@ -48,7 +53,7 @@ def studentApi(request, id=0):
 
     elif request.method == "PUT":
         student_data = JSONParser().parse(request)
-        student = Student.objects.get(id=student_data["id"])
+        student = get_object_or_404(Student, id=student_data["id"])
         student_serializer = StudentSerializer(student, data=student_data)
         if student_serializer.is_valid():
             student_serializer.save()
@@ -56,6 +61,6 @@ def studentApi(request, id=0):
         return JsonResponse("Failed To update", safe=False)
 
     elif request.method == "DELETE":
-        student = Student.objects.get(id=id)
+        student = get_object_or_404(Student, id=id)
         student.delete()
         return JsonResponse("Deleted successfully", safe=False)
