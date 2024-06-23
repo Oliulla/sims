@@ -32,3 +32,8 @@
 ```bash
    E:\manik\sims>env\scripts\deactivate
 ```
+
+### Admin Credentials
+
+username: manik
+password: manik@admin
