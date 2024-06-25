@@ -10,6 +10,8 @@ from .models import (
     Book,
     StudentCourse,
     StudentRegistration,
+    Grade,
+    PurchaseBook,
 )
 
 admin.site.register(Student)
@@ -20,3 +22,5 @@ admin.site.register(Accommodation)
 admin.site.register(Book)
 admin.site.register(StudentCourse)
 admin.site.register(StudentRegistration)
+admin.site.register(Grade)
+admin.site.register(PurchaseBook)

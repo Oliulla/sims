@@ -51,7 +51,7 @@ def studentApi(request, id=0):
             )
         return JsonResponse(student_serializer.errors, status=400)
 
-    elif request.method == "PUT":
+    elif request.method == "PATCH":
         student_data = JSONParser().parse(request)
         student = get_object_or_404(Student, id=student_data["id"])
         student_serializer = StudentSerializer(student, data=student_data)
