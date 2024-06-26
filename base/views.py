@@ -5,23 +5,14 @@ from django.http import JsonResponse
 from .models import Student
 from .serializers import StudentSerializer
 
-rooms = [
-    {"id": 1, "name": "Let's learn Python!"},
-    {"id": 2, "name": "Design With Me!"},
-    {"id": 3, "name": "Frontend Developer!"},
-    {"id": 4, "name": "Backend Developer!"},
-]
+from django.shortcuts import render
+from .data_analysis import perform_analysis
 
 
 def home(request):
-    context = {"rooms": rooms}
+    analysis_results = perform_analysis()
+    context = {"analysis_results": analysis_results}
     return render(request, "base/home.html", context)
-
-
-def room(request, pk):
-    room = next((i for i in rooms if i["id"] == int(pk)), None)
-    context = {"room": room}
-    return render(request, "base/room.html", context)
 
 
 @csrf_exempt
