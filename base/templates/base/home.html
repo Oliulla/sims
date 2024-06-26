@@ -43,70 +43,70 @@
       </div>
 
       <!-- Section: Average Scores in Different Majors -->
-      <div class="analysis-section">
+      <!-- <div class="analysis-section">
         <h2>Average Scores in Different Majors</h2>
         <img
           src="{% static 'images/average_scores.png' %}"
           alt="Average Scores"
         />
-      </div>
+      </div> -->
 
       <!-- Section: Relationship Between Student Age and Test Scores -->
-      <div class="analysis-section">
+      <!-- <div class="analysis-section">
         <h2>Relationship Between Student Age and Test Scores</h2>
         <img
           src="{% static 'images/age_score_relation.png' %}"
           alt="Age-Score Relation"
         />
-      </div>
+      </div> -->
 
       <!-- Section: Relationship Between Regional Distribution and Test Scores -->
-      <div class="analysis-section">
+      <!-- <div class="analysis-section">
         <h2>Relationship Between Regional Distribution and Test Scores</h2>
         <img
           src="{% static 'images/regional_score_relation.png' %}"
           alt="Regional Score Relation"
         />
-      </div>
+      </div> -->
 
       <!-- Section: Most Popular Major -->
       <div class="analysis-section">
         <h2>Most Popular Major</h2>
-        <p>
-          The most popular major is {{ analysis_results.most_popular_major.major
-          }}
-        </p>
+
+        <img
+          src="{% static 'images/most_popular_major.png' %}"
+          alt="Most Popular Major"
+        />
       </div>
 
       <!-- Section: Enrollment in Every Year -->
       <div class="analysis-section">
         <h2>Enrollment in Every Year</h2>
-        <ul>
-          {% for enrollment in analysis_results.enrollment_per_year %}
-          <li>
-            Year {{ enrollment.year_of_enrollment }}: {{
-            enrollment.enrollment_count }} students
-          </li>
-          {% endfor %}
-        </ul>
+
+        <img
+          src="{% static 'images/enrollment_per_year.png' %}"
+          alt="Enrollment per Year"
+        />
       </div>
 
       <!-- Section: Most Popular Dorm for the Students -->
       <div class="analysis-section">
         <h2>Most Popular Dorm for the Students</h2>
-        <p>
-          The most popular dorm is {{
-          analysis_results.dorm_popularity.building_name }}
-        </p>
+
+        <img
+          src="{% static 'images/dorm_popularity.png' %}"
+          alt="Most Popular Dorm"
+        />
       </div>
 
       <!-- Section: Most A+ in Which Major -->
       <div class="analysis-section">
         <h2>Most A+ in Which Major</h2>
-        <p>
-          The major with the most A+ grades is {{
-          analysis_results.most_a_plus_major.major }}
-        </p>
+
+        <img
+          src="{% static 'images/most_a_plus_major.png' %}"
+          alt="Most A+ in Which Major"
+        />
       </div>
     </div>
     <!-- /.container -->
